@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MoluscApp</string>
+    <string name="btnFoto">Foto</string>
+    <string name="btnConfirmar">Confirmar</string>
+    <string name="btnNuevo">Nuevo</string>
+    <string name="on_off">On/Off</string>
+    <string name="btnGaleria">Galería</string>
+</resources>

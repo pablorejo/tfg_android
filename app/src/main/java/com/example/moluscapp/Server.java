@@ -28,9 +28,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.moluscapp.data.ImageResponse;
+import com.example.moluscapp.data.ResponseImage;
+import com.example.moluscapp.data.ResponseMoreImages;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 public class Server {
     String DOMINIO = "192.168.33.25/user";
     String URL = "http://" + DOMINIO;
@@ -56,7 +61,8 @@ public class Server {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                callback.onResponse(response);
+                ResponseImage imageResponse = gson.fromJson(response, ResponseImage.class);
+                callback.onResponse(imageResponse);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -79,13 +85,7 @@ public class Server {
                 JSONArray jsonArray = new JSONArray();
                 for (Bitmap bitmap : imagenes) {
                     String base64Image = bitmapToBase64(bitmap);
-                    JSONObject jsonImage = new JSONObject();
-                    try {
-                        jsonImage.put("image", base64Image);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    jsonArray.put(jsonImage);
+                    jsonArray.put(base64Image);
                 }
                 JSONObject jsonBody = new JSONObject();
                 try {
@@ -121,13 +121,15 @@ public class Server {
     }
 
     // Método para clasificar imágenes
-    public void clasificarImagene(Bitmap imagen, ServerCallback callback) {
+    public void clasificarImagen(Bitmap imagen, ServerCallback callback) {
         String url = this.URL + "/taxonomic_route";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                callback.onResponse(response);
+                // Type listType = new TypeToken<ArrayList<ImageResponse>>(){}.getType();
+                ResponseMoreImages responseMoreImages = gson.fromJson(response, ResponseMoreImages.class);
+                callback.onResponse(responseMoreImages);
             }
         }, new Response.ErrorListener() {
             @Override

@@ -2,11 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp"
-    tools:context=".ClasificationOneImage">
+    tools:context=".ClasificationMoreImages">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,45 +18,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <ImageView
                 android:id="@+id/image_recive"
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
                 android:src="@mipmap/ic_launcher" />
 
-            <LinearLayout
-                android:id="@+id/layoutBtnImagenes"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnAnterior"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Anterior" />
-
-                <Button
-                    android:id="@+id/btnSiguiente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Siguiente" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/topName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="Ruta top1"
-                android:textSize="40sp" />
-
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -194,7 +165,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="20dp"
-                        android:text="Especie: "
+                        android:text="Especie1: "
                         android:textSize="25sp" />
 
                     <TextView
@@ -214,31 +185,164 @@
                         android:text="0.7"
                         android:textSize="25sp"
                         tools:ignore="TouchTargetSizeCheck" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textViewEspecie2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="Especie2: "
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/especie2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="TextView"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/confianza_especie2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:inputType="number"
+                        android:text="0.7"
+                        android:textSize="25sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textViewEspecie3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="Especie3: "
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/especie3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="TextView"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/confianza_especie3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:inputType="number"
+                        android:text="0.7"
+                        android:textSize="25sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textViewEspecie4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="Especie4: "
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/especie4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="TextView"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/confianza_especie4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:inputType="number"
+                        android:text="0.7"
+                        android:textSize="25sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textViewEspecie5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="Especie5: "
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/especie5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="TextView"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/confianza_especie5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:inputType="number"
+                        android:text="0.7"
+                        android:textSize="25sp"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </TableRow>
             </TableLayout>
 
             <LinearLayout
-                android:layout_marginTop="20dp"
-                android:id="@+id/layoutBtnTops"
+                android:id="@+id/layoutBtnImagenes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnAnteriorTop"
+                    android:id="@+id/btnAnterior"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Anterior top" />
+                    android:text="Anterior" />
 
                 <Button
-                    android:id="@+id/btnSiguienteTop"
+                    android:id="@+id/btnSiguiente"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Siguiente top" />
+                    android:text="Siguiente" />
             </LinearLayout>
-
 
         </LinearLayout>
     </ScrollView>

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.transition.Transition;
 
 import android.content.ClipData;
 import android.content.Intent;
@@ -32,11 +31,15 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.example.moluscapp.data.ResponseImage;
+import com.example.moluscapp.data.ResponseMoreImages;
 
 import android.Manifest;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -167,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
         if (imagenes.size() == 1){
             ImageView imageView = new ImageView(this);
             imageView.setImageBitmap(imagenes.get(0).imagen);
+            imageView.setMaxHeight(500);
             linearLayout.addView(imageView);
         } else if (imagenes.size() > 1) {
             for (int k = 0; k<imagenes.size(); k++){
@@ -200,18 +204,20 @@ public class MainActivity extends AppCompatActivity {
             server.clasificarImagenes(imagenes_cheked, new ServerCallback() {
                 @Override
                 public void onResponse(Object object) {
-                    Intent intent = new Intent(getApplicationContext(), Clasificacion.class);
-                    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Necesario cuando se inicia una actividad fuera de un contexto de actividad
+                    ResponseImage imageResponse = (ResponseImage) object;
+                    Intent intent = new Intent(getApplicationContext(), ClasificationOneImage.class);
+                    saveImageResponseToFile(imageResponse);
                     startActivity(intent);
                 }
             });
         }else if (imagenes_cheked.size() == 1){
             Toast.makeText(MainActivity.this, "Clasificando Imágenes", Toast.LENGTH_SHORT).show();
-            server.clasificarImagenes(imagenes_cheked, new ServerCallback() {
+            server.clasificarImagen(imagenes_cheked.get(0), new ServerCallback() {
                 @Override
                 public void onResponse(Object object) {
-                    Intent intent = new Intent(getApplicationContext(), Clasificacion.class);
-                    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Necesario cuando se inicia una actividad fuera de un contexto de actividad
+                    ResponseMoreImages responseMoreImages = (ResponseMoreImages) object;
+                    Intent intent = new Intent(getApplicationContext(), ClasificationMoreImages.class);
+                    saveImageResponseToFile(responseMoreImages);
                     startActivity(intent);
                 }
             });
@@ -296,6 +302,18 @@ public class MainActivity extends AppCompatActivity {
         public Imagen(Bitmap imagen, Boolean checked){
             this.imagen = imagen;
             this.checked = checked;
+        }
+    }
+
+    private void saveImageResponseToFile(Object object) {
+        try {
+            FileOutputStream fileOutputStream = openFileOutput("imageResponseFile", MODE_PRIVATE);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(object);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

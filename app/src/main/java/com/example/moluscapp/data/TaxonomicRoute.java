@@ -13,6 +13,7 @@ public class TaxonomicRoute implements Serializable {
     public String  familia;
     public Float conf_familia;
 
+
     public String genero;
     public Float conf_genero;
 

@@ -1,5 +1,6 @@
 package com.example.moluscapp;
 
+import android.hardware.camera2.CameraExtensionSession;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,13 +15,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.moluscapp.data.ImageResponse;
 import com.example.moluscapp.data.ResponseImage;
 import com.example.moluscapp.data.ResponseMoreImages;
+import com.example.moluscapp.data.TaxonomicRoute;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
 public class ClasificationMoreImages extends AppCompatActivity {
-    TextView clase,orden,familia,genero,especie1,especie2,especie3,especie4,especie5;
     ImageView image;
 
     ResponseMoreImages responseMoreImages;
@@ -75,36 +76,53 @@ public class ClasificationMoreImages extends AppCompatActivity {
         return imageResponse;
     }
 
-    private void setImageIndex(int index){
+    private void setImageIndex(int index) {
         ImageResponse imageResponse = responseMoreImages.responseImages.get(index).image;
+
+        // Establecer la imagen
         image.setImageBitmap(imageResponse.getImagesBitmaps().get(index));
 
-        // Ruta taxonómica
-        clase = findViewById(R.id.clase);
-        clase.setText(imageResponse.taxonomic_rank_top1.clase);
+        // Función auxiliar para establecer el texto del TextView si el valor no es null
+        setTextIfNotNull(R.id.clase, imageResponse.taxonomic_rank_top1.clase);
+        setConfIfNotNull(R.id.confianza_clase, imageResponse.taxonomic_rank_top1.conf_clase);
 
-        orden = findViewById(R.id.orden);
-        orden.setText(imageResponse.taxonomic_rank_top1.orden);
+        setTextIfNotNull(R.id.orden, imageResponse.taxonomic_rank_top1.orden);
+        setConfIfNotNull(R.id.confianza_orden, imageResponse.taxonomic_rank_top1.conf_orden);
 
-        familia = findViewById(R.id.familia);
-        familia.setText(imageResponse.taxonomic_rank_top1.familia);
+        setTextIfNotNull(R.id.familia, imageResponse.taxonomic_rank_top1.familia);
+        setConfIfNotNull(R.id.confianza_familia, imageResponse.taxonomic_rank_top1.conf_familia);
 
-        genero = findViewById(R.id.genero);
-        genero.setText(imageResponse.taxonomic_rank_top1.genero);
+        setTextIfNotNull(R.id.genero, imageResponse.taxonomic_rank_top1.genero);
+        setConfIfNotNull(R.id.confianza_genero, imageResponse.taxonomic_rank_top1.conf_genero);
 
-        especie1 = findViewById(R.id.especie);
-        especie1.setText(imageResponse.taxonomic_rank_top1.especie);
+        setTextIfNotNull(R.id.especie, imageResponse.taxonomic_rank_top1.especie);
+        setConfIfNotNull(R.id.confianza_especie, imageResponse.taxonomic_rank_top1.conf_especie);
 
-        especie2 = findViewById(R.id.especie2);
-        especie2.setText(imageResponse.taxonomic_rank_top2.especie);
+        setTextIfNotNull(R.id.especie2, imageResponse.taxonomic_rank_top2.especie);
+        setConfIfNotNull(R.id.confianza_especie2, imageResponse.taxonomic_rank_top2.conf_especie);
 
-        especie3 = findViewById(R.id.especie3);
-        especie3.setText(imageResponse.taxonomic_rank_top3.especie);
+        setTextIfNotNull(R.id.especie3, imageResponse.taxonomic_rank_top3.especie);
+        setConfIfNotNull(R.id.confianza_especie3, imageResponse.taxonomic_rank_top3.conf_especie);
 
-        especie4 = findViewById(R.id.especie4);
-        especie4.setText(imageResponse.taxonomic_rank_top4.especie);
+        setTextIfNotNull(R.id.especie4, imageResponse.taxonomic_rank_top4.especie);
+        setConfIfNotNull(R.id.confianza_especie4, imageResponse.taxonomic_rank_top4.conf_especie);
 
-        especie5 = findViewById(R.id.especie5);
-        especie5.setText(imageResponse.taxonomic_rank_top5.especie);
+        setTextIfNotNull(R.id.especie5, imageResponse.taxonomic_rank_top5.especie);
+        setConfIfNotNull(R.id.confianza_especie5, imageResponse.taxonomic_rank_top5.conf_especie);
+    }
+
+    // Función auxiliar para establecer el texto del TextView si el valor no es null
+    private void setTextIfNotNull(int textViewId, String text) {
+        if (text != null) {
+            TextView textView = findViewById(textViewId);
+            textView.setText(text);
+        }
+    }
+
+    private void setConfIfNotNull(int textViewId, Float confInt) {
+        if (confInt != null){
+            TextView textView = findViewById(textViewId);
+            textView.setText(String.format("%.2f", confInt));
+        }
     }
 }

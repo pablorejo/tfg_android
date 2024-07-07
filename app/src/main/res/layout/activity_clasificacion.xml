@@ -55,167 +55,202 @@
                 android:text="Ruta top1"
                 android:textSize="40sp" />
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center">
+                    android:layout_marginBottom="10dp"
+                    android:background="#2D00BCD4"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
                         android:text="Clase: "
-                        android:textSize="25sp" />
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/clase"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="TextView"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text="NoData"
                         android:textSize="25sp" />
 
                     <TextView
                         android:id="@+id/confianza_clase"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="0.981"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text=""
                         android:textSize="25sp" />
-                </TableRow>
+                </LinearLayout>
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center">
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#2D00BCD4"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
                         android:text="Orden: "
-                        android:textSize="25sp" />
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/orden"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="TextView"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text="NoData"
                         android:textSize="25sp" />
 
                     <TextView
                         android:id="@+id/confianza_orden"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="0.981"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text=""
                         android:textSize="25sp" />
-                </TableRow>
+                </LinearLayout>
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center">
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#2D00BCD4"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
                         android:text="Familia: "
-                        android:textSize="25sp" />
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/familia"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="TextView"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text="NoData"
                         android:textSize="25sp" />
 
                     <TextView
                         android:id="@+id/confianza_familia"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="0.981"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text=""
                         android:textSize="25sp" />
-                </TableRow>
+                </LinearLayout>
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center">
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#2D00BCD4"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
                         android:text="Genero: "
-                        android:textSize="25sp" />
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/genero"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="TextView"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text="NoData"
                         android:textSize="25sp" />
 
                     <TextView
                         android:id="@+id/confianza_genero"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="0.981"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text=""
                         android:textSize="25sp" />
-                </TableRow>
+                </LinearLayout>
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center">
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#2D00BCD4"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
                         android:text="Especie: "
-                        android:textSize="25sp" />
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/especie"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="TextView"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
+                        android:text="NoData"
                         android:textSize="25sp" />
 
                     <TextView
                         android:id="@+id/confianza_especie"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center"
                         android:inputType="number"
-                        android:text="0.7"
+                        android:text=""
                         android:textSize="25sp"
                         tools:ignore="TouchTargetSizeCheck" />
-                </TableRow>
-            </TableLayout>
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_marginTop="20dp"

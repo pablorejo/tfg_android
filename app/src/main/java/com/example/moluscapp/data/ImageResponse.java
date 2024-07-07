@@ -69,4 +69,13 @@ public class ImageResponse implements Serializable {
                 return null;
         }
     }
+
+    public Integer getLastIndex() {
+        if (this.taxonomic_rank_top5 != null) return 5;
+        if (this.taxonomic_rank_top4 != null) return 4;
+        if (this.taxonomic_rank_top3 != null) return 3;
+        if (this.taxonomic_rank_top2 != null) return 2;
+        if (this.taxonomic_rank_top1 != null) return 1;
+        return 0;
+    }
 }

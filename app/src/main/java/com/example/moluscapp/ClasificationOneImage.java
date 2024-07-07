@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.moluscapp.data.ImageResponse;
 import com.example.moluscapp.data.ResponseImage;
 import com.example.moluscapp.data.ResponseMoreImages;
+import com.example.moluscapp.data.TaxonomicRoute;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 public class ClasificationOneImage extends AppCompatActivity {
     ImageView image;
     TextView clase,orden,familia,genero,especie,topName;
+    TextView confianza_clase,confianza_orden,confianza_familia,confianza_genero,confianza_especie;
+
     LinearLayout layoutBtnImagenes;
     Button btnSiguiente,btnAnterior;
     Button btnSiguienteTop,btnAnteriorTop;
@@ -30,6 +33,7 @@ public class ClasificationOneImage extends AppCompatActivity {
     ImageResponse imageResponse;
     int indexImage = 0;
     int indexTop = 1;
+    int lastIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +66,7 @@ public class ClasificationOneImage extends AppCompatActivity {
         btnAnteriorTop.setOnClickListener(view -> {
             indexTop --;
             if (indexTop < 0){
-                indexTop = 5;
+                indexTop = lastIndex;
             }
             changeTop(indexTop);
         });
@@ -70,13 +74,14 @@ public class ClasificationOneImage extends AppCompatActivity {
         btnSiguienteTop = findViewById(R.id.btnSiguienteTop);
         btnSiguienteTop.setOnClickListener(view -> {
             indexTop ++;
-            if (indexTop > 5){
+            if (indexTop > lastIndex){
                 indexTop = 1;
             }
             changeTop(indexTop);
         });
 
         imageResponse = responseImage.image;
+        lastIndex = imageResponse.getLastIndex();
         bitMapsImages = imageResponse.getImagesBitmaps();
 
         this.image.setImageBitmap(bitMapsImages.get(0));
@@ -84,18 +89,8 @@ public class ClasificationOneImage extends AppCompatActivity {
             layoutBtnImagenes.setVisibility(View.GONE);
         }
 
-        topName = findViewById(R.id.topName);
-        clase = findViewById(R.id.clase);
-        orden = findViewById(R.id.orden);
-        familia = findViewById(R.id.familia);
-        genero = findViewById(R.id.genero);
-        especie = findViewById(R.id.especie);
-
+        setButons();
         changeTop(indexTop);
-
-
-
-
     }
 
     private ResponseImage loadImageResponseFromFile() {
@@ -112,18 +107,58 @@ public class ClasificationOneImage extends AppCompatActivity {
         return imageResponse;
     }
 
-    private void changeTop(int indexTop){
-        topName.setText("TOP  " + String.valueOf(indexTop));
+    private void changeTop(int indexTop) {
+        // Establecer el nombre del top
+        topName.setText("TOP " + indexTop);
 
-        // Ruta taxonómica
-        clase.setText(imageResponse.getTaxonomicRoutePerIndex(indexTop).clase);
+        // Obtener la ruta taxonómica para el índice dado
+        TaxonomicRoute route = imageResponse.getTaxonomicRoutePerIndex(indexTop);
 
-        orden.setText(imageResponse.getTaxonomicRoutePerIndex(indexTop).orden);
+        // Establecer los valores en los TextViews
+        setTextIfNotNull(clase, route.clase);
+        setConfIfNotNull(confianza_clase,route.conf_clase);
 
-        familia.setText(imageResponse.getTaxonomicRoutePerIndex(indexTop).familia);
+        setTextIfNotNull(orden, route.orden);
+        setConfIfNotNull(confianza_orden,route.conf_orden);
 
-        genero.setText(imageResponse.getTaxonomicRoutePerIndex(indexTop).genero);
+        setTextIfNotNull(familia, route.familia);
+        setConfIfNotNull(confianza_familia,route.conf_familia);
 
-        especie.setText(imageResponse.getTaxonomicRoutePerIndex(indexTop).especie);
+        setTextIfNotNull(genero, route.genero);
+        setConfIfNotNull(confianza_genero,route.conf_genero);
+
+        setTextIfNotNull(especie, route.especie);
+        setConfIfNotNull(confianza_especie,route.conf_especie);
+    }
+
+    private void setButons(){
+        topName = findViewById(R.id.topName);
+        clase = findViewById(R.id.clase);
+        orden = findViewById(R.id.orden);
+        familia = findViewById(R.id.familia);
+        genero = findViewById(R.id.genero);
+        especie = findViewById(R.id.especie);
+
+        confianza_clase = findViewById(R.id.confianza_clase);
+        confianza_orden = findViewById(R.id.confianza_orden);
+        confianza_familia = findViewById(R.id.confianza_familia);
+        confianza_genero = findViewById(R.id.confianza_genero);
+        confianza_especie = findViewById(R.id.confianza_especie);
+    }
+
+    // Función auxiliar para establecer el texto del TextView si el valor no es null
+    private void setTextIfNotNull(TextView textView, String text) {
+        if (text != null) {
+            textView.setText(text);
+        }else{
+            textView.setText("NoData");
+        }
+    }
+    private void setConfIfNotNull(TextView textView, Float conf){
+        if (conf != null){
+            textView.setText(String.format("%.2f", conf));
+        }else{
+            textView.setText("");
+        }
     }
 }
